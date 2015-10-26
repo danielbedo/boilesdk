@@ -48,30 +48,8 @@ object doubleConversion {
     }
   }
 
-//  // Base case for coproducts
-//  implicit val dcCNil: DoubleConverter[CNil] = new DoubleConverter[CNil] {
-//    def toDouble(x: CNil): Vector[Double] = Vector()
-//  }
-//
-//  // Induction step for products
-//  implicit def dcCNCons[H, T <: Coproduct]
-//  (implicit
-//   dcH: Lazy[DoubleConverter[H]],
-//   dcT: Lazy[DoubleConverter[T]]
-//    ): DoubleConverter[H :+: T] =
-//    new DoubleConverter[H :+: T] {
-//      def toDouble(x: H :+: T): Vector[Double] =
-//        x match {
-//          case (Inl(h)) => dcH.value.toDouble(h)
-//          case (Inr(t)) => dcT.value.toDouble(t)
-//          case _ => Vector()
-//        }
-//    }
-
   implicit class DoubleOps[T](x: T)(implicit dcT: DoubleConverter[T]) {
     def toDouble: Vector[Double] = dcT.toDouble(x)
   }
-
-  case class Timbo(a: Int, s: Boolean)
 
 }
