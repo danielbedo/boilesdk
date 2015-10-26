@@ -14,6 +14,7 @@ case class House(size: Double, numRooms: Int, price: Int) {
     def toDouble(): Vector[Double] = Vector(size, numRooms.toDouble, price.toDouble) 
 }
 ```
-This is perfectly fine if you have one class and it's not really changing, but it's get tedious if you have 50 features encoded in nested case
+This is perfectly fine if you have one class and it's not really changing, but it get's tedious if you have 50 features encoded in nested case
 classes that change everyday as you are experimenting with your features.
+here comes shapeless:
  
