@@ -1,4 +1,4 @@
-package derivation.generic
+package boilesdk.derivation.generic
 
 import shapeless._
 

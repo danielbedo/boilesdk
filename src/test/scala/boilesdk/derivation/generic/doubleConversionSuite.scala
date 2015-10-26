@@ -1,6 +1,6 @@
-package derivation.generic
+package boilesdk.derivation.generic
 
-import derivation.generic.doubleConversion._
+import doubleConversion._
 import shapeless.test.illTyped
 
 import org.scalatest.FunSuite
