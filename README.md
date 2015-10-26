@@ -15,6 +15,7 @@ This is perfectly fine if you have only one class and it's not changing often, b
 if you have 50 features encoded in nested case classes that change everyday as you are experimenting with your features.
 You could inspect the class at runtime using reflection and add the method there, but then if you change the case class but forget to change the method that spits out the Vector representation
 you might only find it out at runtime.
+##### A simple case class
 Let's solve these problems at compile time and use shapeless to generate this method for us.
 All you need to do is define your case class and import doubleConversion as follows:
 ```scala
@@ -26,7 +27,7 @@ output:
 ```scala
 Vector(51.5, 3.0, 122.0, 0.0)
 ```
-
+##### Adding custom converters for missing types
 For now there are conversions available for the following primitive types: Int, Double, Boolean.
 If your class contains some other type then the method toDouble won't be available on it, altough you can easily
 add an implicit converter for the missing type to the companion object which will make it available.
@@ -50,8 +51,8 @@ output:
 ```scala
 Vector(51.5, 3.0, 122.0, 0.0, 0.0)
 ```
-
-Nested Case Classes also get flattened into the vector:
+##### Nested case classes
+Nested case classes also get flattened into the vector:
 ```scala
 case class House(size: Double, numRooms: Int, wc: WindowCount)
 case class WindowCount(num: Int)
