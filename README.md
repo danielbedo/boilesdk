@@ -19,6 +19,8 @@ you might only find it out at runtime.
 Let's solve these problems at compile time and use shapeless to generate this method for us.
 All you need to do is define your case class and import doubleConversion as follows:
 ```scala
+import boilesdk.derivation.generic.doubleConversion._
+
 case class House(size: Double, numRooms: Int, price: Int, free: Boolean)
 val house = House(51.5, 3, 122, false)
 println(house.toDouble)
